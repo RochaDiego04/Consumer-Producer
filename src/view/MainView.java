@@ -4,6 +4,8 @@
  */
 package view;
 
+import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -44,7 +46,7 @@ public class MainView extends javax.swing.JFrame {
         btn_addProducer = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1126, 617));
+        setResizable(false);
         setSize(new java.awt.Dimension(1126, 617));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -67,12 +69,15 @@ public class MainView extends javax.swing.JFrame {
         btn_addConsumer.setText("Add Consumer");
         btn_addConsumer.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 102, 0), 1, true));
         btn_addConsumer.setFocusPainted(false);
-        btn_addConsumer.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_addConsumerActionPerformed(evt);
+        btn_addConsumer.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_addConsumerMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_addConsumerMouseExited(evt);
             }
         });
-        pnl_background.add(btn_addConsumer, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 40, 230, 50));
+        pnl_background.add(btn_addConsumer, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 40, 230, 50));
 
         pnl_producerInfo.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         pnl_producerInfo.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
@@ -102,9 +107,16 @@ public class MainView extends javax.swing.JFrame {
         btn_addProducer.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 24)); // NOI18N
         btn_addProducer.setForeground(new java.awt.Color(255, 255, 255));
         btn_addProducer.setText("Add Producer");
-        btn_addProducer.setToolTipText("");
         btn_addProducer.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 102, 0), 1, true));
         btn_addProducer.setFocusPainted(false);
+        btn_addProducer.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_addProducerMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_addProducerMouseExited(evt);
+            }
+        });
         btn_addProducer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_addProducerActionPerformed(evt);
@@ -117,10 +129,23 @@ public class MainView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_addConsumerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addConsumerActionPerformed
+    private void btn_addConsumerMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_addConsumerMouseEntered
+        btn_addConsumer.setBackground(new Color(21,21,21));
+        btn_addConsumer.setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_btn_addConsumerMouseEntered
 
-    
-    }//GEN-LAST:event_btn_addConsumerActionPerformed
+    private void btn_addConsumerMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_addConsumerMouseExited
+       btn_addConsumer.setBackground(new Color(0,0,0));
+    }//GEN-LAST:event_btn_addConsumerMouseExited
+
+    private void btn_addProducerMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_addProducerMouseEntered
+        btn_addProducer.setBackground(new Color(21,21,21));
+        btn_addProducer.setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_btn_addProducerMouseEntered
+
+    private void btn_addProducerMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_addProducerMouseExited
+        btn_addProducer.setBackground(new Color(0,0,0));
+    }//GEN-LAST:event_btn_addProducerMouseExited
 
     private void btn_addProducerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addProducerActionPerformed
         // TODO add your handling code here:
