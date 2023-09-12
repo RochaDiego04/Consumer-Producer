@@ -4,37 +4,41 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Panel extends JPanel {
-    int id;
-    private String kindOfPanel;
+    public int id;
+    public String kindOfPanel;
+    public JPanel img_panel;
+    public JLabel img_label;
     
     public Panel(int id, String kindOfPanel) {
         this.id = id;
         this.kindOfPanel = kindOfPanel;
+        
         setLayout(new BorderLayout());
 
         // Create a panel to hold the squared label with FlowLayout
-        JPanel labelPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        labelPanel.setPreferredSize(new Dimension(100, 150)); // Increased height for label
-        labelPanel.setMaximumSize(new Dimension(100, 150)); // Ensure a fixed size
+        this.img_panel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        this.img_panel.setPreferredSize(new Dimension(100, 150)); // Increased height for label
+        this.img_panel.setMaximumSize(new Dimension(100, 150)); // Ensure a fixed size
 
         // Create a squared label
-        JLabel squaredLabel = new JLabel("");
-        squaredLabel.setPreferredSize(new Dimension(100, 100));
-        squaredLabel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        this.img_label = new JLabel("");
+        this.img_label.setPreferredSize(new Dimension(100, 100));
+        this.img_label.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        this.img_label.setIcon(new ImageIcon(getClass().getResource("/img/standing.png")));
 
         // Create a label below the img_label
         JLabel consumerLabel = new JLabel(kindOfPanel + (id+1));
 
         // Add the squared label and consumer label to the label panel
-        labelPanel.add(squaredLabel);
-        labelPanel.add(consumerLabel);
+        this.img_panel.add(img_label);
+        this.img_panel.add(consumerLabel);
 
         // Create a textbox with a scroll pane on the right
         JTextArea textArea = new JTextArea(10, 20);
         JScrollPane scrollPane = new JScrollPane(textArea);
 
         // Add components to the panel
-        add(labelPanel, BorderLayout.WEST);
+        add(this.img_panel, BorderLayout.WEST);
         add(scrollPane, BorderLayout.CENTER);
     }
 }

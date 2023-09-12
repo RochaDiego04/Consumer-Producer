@@ -25,13 +25,25 @@ public class Buffer {
         this.isFull = false;
     }
     
-    public synchronized String consume(){
+    public synchronized String consume(int consumerIndex, Consumer consumer){
         while(this.isEmpty){
             try {
+                consumer.setStateFlag("sleeping");
+                consumer.controller.updateGUIConsumerStates(consumerIndex); //Update GUI
                 wait();
             } catch (InterruptedException ex) {
                 Logger.getLogger(Buffer.class.getName()).log(Level.SEVERE, null, ex);
             }
+        }
+        
+        consumer.setStateFlag("consuming");
+        consumer.controller.updateGUIConsumerStates(consumerIndex);
+        
+        // Sleep for consuming
+        try {
+            consumer.sleep( (int) Math.random() * 4000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Buffer.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         next--;
