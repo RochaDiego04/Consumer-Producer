@@ -27,25 +27,33 @@ public class Consumer extends Thread{
         
         while(true){
             
-            this.consuming();
-            
-            try {
-                sleep((int) (Math.random() * 4000));
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Producer.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            this.consuming(); // If buffer is empty, sleeps
+            this.standing(); // Time between consuming
         }
     }
     
     public void consuming(){
         String burguer = this.buffer.consume(this.index, this);
-        System.out.println(burguer + " Taken from buffer by Consumer: " + index);
+        //System.out.println(burguer + " Taken from buffer by Consumer: " + index);
+    }
+    
+    public void eating(){ // Method called from consuming()
+        try {
+            this.setStateFlag("consuming");
+            System.out.println("Consumer " + index + " is " + this.getStateFlag());
+            this.controller.updateGUIConsumerStates(index);
+            
+            sleep((long) (Math.random() * 4000));
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Consumer.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     public void standing(){
+        this.setStateFlag("standing");
         controller.updateGUIConsumerStates(index);
         try {
-            sleep((long) (Math.random() * 2000));
+            sleep((long) (Math.random() * 4000));
         } catch (InterruptedException ex) {
             Logger.getLogger(Consumer.class.getName()).log(Level.SEVERE, null, ex);
         }

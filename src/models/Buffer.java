@@ -36,15 +36,7 @@ public class Buffer {
             }
         }
         
-        consumer.setStateFlag("consuming");
-        consumer.controller.updateGUIConsumerStates(consumerIndex);
-        
-        // Sleep for consuming
-        try {
-            consumer.sleep( (int) Math.random() * 4000);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(Buffer.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        consumer.eating();
         
         next--;
         this.isFull = false;

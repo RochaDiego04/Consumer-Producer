@@ -65,7 +65,7 @@ public class Controller implements ActionListener{
     }
     
     public void createProducers() {
-        this.producers = new Producer[5];
+        this.producers = new Producer[1];
     
         for (int i = 0; i < this.producers.length; i++) {
             this.producers[i] = new Producer(buffer, i); // add same buffer for each producer
