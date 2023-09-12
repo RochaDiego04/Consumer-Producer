@@ -9,10 +9,10 @@ import java.util.logging.Logger;
 public class Producer extends Thread{
     private Buffer buffer;
     private final String[] burgers = {"Cheeseburger", "Bacon Burger", "Veggie Burger"};
-    private String name;
+    private int index;
     
-    public Producer(Buffer buffer, String name){
-        this.name = name;
+    public Producer(Buffer buffer, int index){
+        this.index = index;
         this.buffer = buffer;
     }
     
@@ -21,7 +21,7 @@ public class Producer extends Thread{
             int randomIndex = (int) (Math.random() * burgers.length);
             String burguer = burgers[randomIndex]; // Get a random burguer from array
             buffer.produce(burguer);
-            System.out.println(burguer + " Inserted into the buffer by: " + name);
+            System.out.println(burguer + " Inserted into the buffer by Producer: " + index);
             
             try {
                 sleep((int) (Math.random() * 4000));

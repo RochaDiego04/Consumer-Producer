@@ -21,7 +21,6 @@ public class MainView extends javax.swing.JFrame {
      */
     public MainView() {
         initComponents();
-        addPanelsToConsumerInfo();
         
     }
 
@@ -38,8 +37,8 @@ public class MainView extends javax.swing.JFrame {
         lbl_numConsumers = new javax.swing.JLabel();
         lbl_numProducers = new javax.swing.JLabel();
         btn_addConsumer = new javax.swing.JButton();
-        pnl_producerInfo = new javax.swing.JScrollPane();
-        pnl_consumerInfo1 = new javax.swing.JPanel();
+        jScrollPane = new javax.swing.JScrollPane();
+        pnl_producerInfo = new javax.swing.JPanel();
         img_restaurant = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         pnl_consumerInfo = new javax.swing.JPanel();
@@ -78,21 +77,21 @@ public class MainView extends javax.swing.JFrame {
                 btn_addConsumerMouseExited(evt);
             }
         });
-        pnl_background.add(btn_addConsumer, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 50, 200, 40));
+        pnl_background.add(btn_addConsumer, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, 200, 40));
 
-        pnl_producerInfo.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        pnl_producerInfo.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-        pnl_producerInfo.setPreferredSize(new Dimension(250, pnl_consumerInfo.getPreferredSize().height));
-        pnl_producerInfo.setViewportView(pnl_consumerInfo);
+        jScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        jScrollPane.setPreferredSize(new Dimension(250, pnl_consumerInfo.getPreferredSize().height));
+        jScrollPane.setViewportView(pnl_consumerInfo);
 
-        pnl_consumerInfo1.setLayout(new java.awt.GridLayout(0, 1));
-        pnl_producerInfo.setViewportView(pnl_consumerInfo1);
+        pnl_producerInfo.setLayout(new java.awt.GridLayout(0, 1));
+        jScrollPane.setViewportView(pnl_producerInfo);
 
-        pnl_background.add(pnl_producerInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 90, 210, 470));
+        pnl_background.add(jScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 90, 250, 470));
 
         img_restaurant.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/background.png"))); // NOI18N
         img_restaurant.setRequestFocusEnabled(false);
-        pnl_background.add(img_restaurant, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, 610, 460));
+        pnl_background.add(img_restaurant, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 530, 460));
 
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
@@ -102,7 +101,7 @@ public class MainView extends javax.swing.JFrame {
         pnl_consumerInfo.setLayout(new java.awt.GridLayout(0, 1));
         jScrollPane1.setViewportView(pnl_consumerInfo);
 
-        pnl_background.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 210, 470));
+        pnl_background.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 250, 470));
 
         btn_addProducer.setBackground(new java.awt.Color(0, 0, 0));
         btn_addProducer.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 24)); // NOI18N
@@ -123,7 +122,7 @@ public class MainView extends javax.swing.JFrame {
                 btn_addProducerActionPerformed(evt);
             }
         });
-        pnl_background.add(btn_addProducer, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 50, 220, 40));
+        pnl_background.add(btn_addProducer, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 30, 220, 40));
 
         btn_start.setBackground(new java.awt.Color(0, 0, 0));
         btn_start.setFont(new java.awt.Font("Yu Gothic UI", 1, 36)); // NOI18N
@@ -176,14 +175,7 @@ public class MainView extends javax.swing.JFrame {
     private void btn_startMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_startMouseExited
         btn_start.setBackground(new Color(0,0,0));
     }//GEN-LAST:event_btn_startMouseExited
-    
-    private void addPanelsToConsumerInfo() {
-        for (int i = 1; i <= 30; i++) {
-            JPanel jPanel = new JPanel();
-            jPanel.add(new JLabel("Label " + i));
-            pnl_consumerInfo.add(jPanel);
-        }
-    }
+
     /**
      * @param args the command line arguments
      */
@@ -224,12 +216,12 @@ public class MainView extends javax.swing.JFrame {
     public javax.swing.JButton btn_addProducer;
     public javax.swing.JButton btn_start;
     private javax.swing.JLabel img_restaurant;
+    private javax.swing.JScrollPane jScrollPane;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_numConsumers;
     private javax.swing.JLabel lbl_numProducers;
     private javax.swing.JPanel pnl_background;
-    private javax.swing.JPanel pnl_consumerInfo;
-    private javax.swing.JPanel pnl_consumerInfo1;
-    private javax.swing.JScrollPane pnl_producerInfo;
+    public javax.swing.JPanel pnl_consumerInfo;
+    public javax.swing.JPanel pnl_producerInfo;
     // End of variables declaration//GEN-END:variables
 }

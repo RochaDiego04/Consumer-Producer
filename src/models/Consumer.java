@@ -8,17 +8,17 @@ import java.util.logging.Logger;
 
 public class Consumer extends Thread{
     private Buffer buffer;
-    private String name;
+    private int index;
     
-    public Consumer(Buffer buffer, String name){
-        this.name = name;
+    public Consumer(Buffer buffer, int index){
+        this.index = index;
         this.buffer = buffer;
     }
     
     public void run(){
         while(true){
             String burguer = this.buffer.consume();
-            System.out.println(burguer + " Taken from buffer by: " + name);
+            System.out.println(burguer + " Taken from buffer by Consumer: " + index);
             
             try {
                 sleep((int) (Math.random() * 4000));

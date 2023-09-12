@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import models.Buffer;
 import models.Consumer;
+import models.Panel;
 import models.Producer;
 import view.MainView;
 
@@ -27,6 +28,7 @@ public class Controller implements ActionListener{
         this.view.btn_start.addActionListener(this);
         this.view.btn_addConsumer.addActionListener(this);
         this.view.btn_addProducer.addActionListener(this);
+        
     }
     
     public void start(){
@@ -42,6 +44,9 @@ public class Controller implements ActionListener{
             createConsumers();
             consumerThreadsCreated = true;
         }
+        
+        printProducerStartingPanels();
+        printConsumerStartingPanels();
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -61,7 +66,7 @@ public class Controller implements ActionListener{
         this.producers = new Producer[5];
     
         for (int i = 0; i < this.producers.length; i++) {
-            this.producers[i] = new Producer(buffer, "Producer" + i); // add same buffer for each producer
+            this.producers[i] = new Producer(buffer, i); // add same buffer for each producer
         }
     }
     
@@ -69,7 +74,7 @@ public class Controller implements ActionListener{
         this.consumers = new Consumer[5];
     
         for (int i = 0; i < this.consumers.length; i++) {
-            this.consumers[i] = new Consumer(buffer, "Consumer" + i);
+            this.consumers[i] = new Consumer(buffer, i);
         }
     }
     
@@ -92,4 +97,20 @@ public class Controller implements ActionListener{
             }
         }
     }
+    
+    public void printProducerStartingPanels(){
+        for (int i = 0; i < producers.length; i++) {
+            Panel producerPanel = new Panel(i, "producer");
+            view.pnl_producerInfo.add(producerPanel);
+        }
+    }
+    
+    public void printConsumerStartingPanels(){
+        for (int i = 0; i < consumers.length; i++) {
+            Panel consumerPanel = new Panel(i, "consumer");
+            view.pnl_consumerInfo.add(consumerPanel);
+        }
+    }
+    
+
 }
