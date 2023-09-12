@@ -32,7 +32,7 @@ public class Producer extends Thread{
             String burguer = burgers[randomIndex]; // Get a random burguer from array
             
             this.producing(burguer);
-            System.out.println(burguer + " Inserted into the buffer by Producer: " + (index + 1));
+            this.controller.updateGUIProducerText(index, "Produced a " + burguer + "\n");
             
             this.standing();
         }
@@ -45,7 +45,7 @@ public class Producer extends Thread{
     public void cooking(){ // Method called from producing()
         try {
             this.setStateFlag("cooking");
-            System.out.println("Producer " + (index+1) + " is " + this.getStateFlag());
+            this.controller.updateGUIProducerText(index, "Producer " + (index+1) + " cooking\n");
             this.controller.updateGUIProducerStates(index);
             
             sleep((long) (Math.random() * 4000));
@@ -56,7 +56,8 @@ public class Producer extends Thread{
     
     public void standing(){
         this.setStateFlag("standing");
-        controller.updateGUIProducerStates(index);
+        this.controller.updateGUIProducerText(index, "Producer " + (index+1) + " standing\n");
+        this.controller.updateGUIProducerStates(index);
         try {
             sleep((long) (Math.random() * 2000));
         } catch (InterruptedException ex) {

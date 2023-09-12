@@ -5,6 +5,7 @@ import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
+import javax.swing.JTextArea;
 import models.Buffer;
 import models.Consumer;
 import models.Panel;
@@ -73,7 +74,7 @@ public class Controller implements ActionListener{
     }
     
     public void createConsumers() {
-        this.consumers = new Consumer[1];
+        this.consumers = new Consumer[5];
     
         for (int i = 0; i < this.consumers.length; i++) {
             this.consumers[i] = new Consumer(buffer, i, this);
@@ -135,6 +136,31 @@ public class Controller implements ActionListener{
         }
     }
     
+    public void updateGUIConsumerText(int consumerIndex, String textToAppend) {
+        String newState = consumers[consumerIndex].getStateFlag();
+        String route = "/img/" + newState + ".png";
+        Panel consumerPanelToChange = null; // Initialize to null
+
+        // Find the Panel corresponding to the consumerIndex
+        for (Component component : view.pnl_consumerInfo.getComponents()) {
+            if (component instanceof Panel) {
+                Panel panel = (Panel) component;
+                if (panel.id == consumerIndex) {
+                    consumerPanelToChange = panel;
+                    break; // Exit the loop once the correct panel is found
+                }
+            }
+        }
+
+        if (consumerPanelToChange != null) {
+            JTextArea textAreaToChange = consumerPanelToChange.txtArea; // Assuming you have a public reference to the JTextArea in your Panel class
+        
+            // Append the text and set the caret position to the end
+            textAreaToChange.append(textToAppend);
+            textAreaToChange.setCaretPosition(textAreaToChange.getDocument().getLength());
+        }
+    }
+    
     public void updateGUIProducerStates(int producerIndex) {
         String newState = producers[producerIndex].getStateFlag();
         String route = "/img/" + newState + ".png";
@@ -153,6 +179,31 @@ public class Controller implements ActionListener{
 
         if (producerPanelToChange != null) {
             producerPanelToChange.img_label.setIcon(new ImageIcon(getClass().getResource(route)));
+        }
+    }
+    
+    public void updateGUIProducerText(int producerIndex, String textToAppend) {
+        String newState = producers[producerIndex].getStateFlag();
+        String route = "/img/" + newState + ".png";
+        Panel producerPanelToChange = null; // Initialize to null
+
+        // Find the Panel corresponding to the consumerIndex
+        for (Component component : view.pnl_producerInfo.getComponents()) {
+            if (component instanceof Panel) {
+                Panel panel = (Panel) component;
+                if (panel.id == producerIndex) {
+                    producerPanelToChange = panel;
+                    break; // Exit the loop once the correct panel is found
+                }
+            }
+        }
+
+        if (producerPanelToChange != null) {
+            JTextArea textAreaToChange = producerPanelToChange.txtArea; // Assuming you have a public reference to the JTextArea in your Panel class
+        
+            // Append the text and set the caret position to the end
+            textAreaToChange.append(textToAppend);
+            textAreaToChange.setCaretPosition(textAreaToChange.getDocument().getLength());
         }
     }
 

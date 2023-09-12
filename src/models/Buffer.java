@@ -29,6 +29,7 @@ public class Buffer {
         while(this.isEmpty){
             try {
                 consumer.setStateFlag("sleeping");
+                consumer.controller.updateGUIConsumerText(consumerIndex, "Consumer " + (consumerIndex+1) + " sleeping\n");
                 consumer.controller.updateGUIConsumerStates(consumerIndex); //Update GUI
                 wait();
             } catch (InterruptedException ex) {
@@ -52,6 +53,7 @@ public class Buffer {
         while(this.isFull){
             try {
                 producer.setStateFlag("sleeping");
+                producer.controller.updateGUIProducerText(producerIndex, "Producer " + (producerIndex+1) + " sleeping\n");
                 producer.controller.updateGUIProducerStates(producerIndex); //Update GUI
                 wait();
             } catch (InterruptedException ex) {

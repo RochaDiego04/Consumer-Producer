@@ -34,13 +34,13 @@ public class Consumer extends Thread{
     
     public void consuming(){
         String burguer = this.buffer.consume(this.index, this);
-        //System.out.println(burguer + " Taken from buffer by Consumer: " + index);
+        this.controller.updateGUIConsumerText(index, "Consumed a " + burguer + "\n");
     }
     
     public void eating(){ // Method called from consuming()
         try {
             this.setStateFlag("consuming");
-            System.out.println("Consumer " + (index + 1) + " is " + this.getStateFlag());
+            this.controller.updateGUIConsumerText(index, "Consumer " + (index+1) + " consuming\n");
             this.controller.updateGUIConsumerStates(index);
             
             sleep((long) (Math.random() * 4000));
@@ -51,7 +51,8 @@ public class Consumer extends Thread{
     
     public void standing(){
         this.setStateFlag("standing");
-        controller.updateGUIConsumerStates(index);
+        this.controller.updateGUIConsumerText(index, "Consumer " + (index+1) + " standing\n");
+        this.controller.updateGUIConsumerStates(index);
         try {
             sleep((long) (Math.random() * 2000 + 1000));
         } catch (InterruptedException ex) {

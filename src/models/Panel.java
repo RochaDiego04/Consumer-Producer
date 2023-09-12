@@ -8,6 +8,7 @@ public class Panel extends JPanel {
     public String kindOfPanel;
     public JPanel img_panel;
     public JLabel img_label;
+    public JTextArea txtArea;
     
     public Panel(int id, String kindOfPanel) {
         this.id = id;
@@ -34,8 +35,8 @@ public class Panel extends JPanel {
         this.img_panel.add(consumerLabel);
 
         // Create a textbox with a scroll pane on the right
-        JTextArea textArea = new JTextArea(10, 20);
-        JScrollPane scrollPane = new JScrollPane(textArea);
+        this.txtArea = new JTextArea(10, 20);
+        JScrollPane scrollPane = new JScrollPane(this.txtArea);
 
         // Add components to the panel
         add(this.img_panel, BorderLayout.WEST);
