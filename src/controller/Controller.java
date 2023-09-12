@@ -65,15 +65,15 @@ public class Controller implements ActionListener{
     }
     
     public void createProducers() {
-        this.producers = new Producer[1];
+        this.producers = new Producer[5];
     
         for (int i = 0; i < this.producers.length; i++) {
-            this.producers[i] = new Producer(buffer, i); // add same buffer for each producer
+            this.producers[i] = new Producer(buffer, i, this); // add same buffer for each producer
         }
     }
     
     public void createConsumers() {
-        this.consumers = new Consumer[5];
+        this.consumers = new Consumer[1];
     
         for (int i = 0; i < this.consumers.length; i++) {
             this.consumers[i] = new Consumer(buffer, i, this);
@@ -115,24 +115,45 @@ public class Controller implements ActionListener{
     }
     
     public void updateGUIConsumerStates(int consumerIndex) {
-    String newState = consumers[consumerIndex].getStateFlag();
-    String route = "/img/" + newState + ".png";
-    Panel consumerPanelToChange = null; // Initialize to null
+        String newState = consumers[consumerIndex].getStateFlag();
+        String route = "/img/" + newState + ".png";
+        Panel consumerPanelToChange = null; // Initialize to null
 
-    // Find the Panel corresponding to the consumerIndex
-    for (Component component : view.pnl_consumerInfo.getComponents()) {
-        if (component instanceof Panel) {
-            Panel panel = (Panel) component;
-            if (panel.id == consumerIndex) {
-                consumerPanelToChange = panel;
-                break; // Exit the loop once the correct panel is found
+        // Find the Panel corresponding to the consumerIndex
+        for (Component component : view.pnl_consumerInfo.getComponents()) {
+            if (component instanceof Panel) {
+                Panel panel = (Panel) component;
+                if (panel.id == consumerIndex) {
+                    consumerPanelToChange = panel;
+                    break; // Exit the loop once the correct panel is found
+                }
             }
         }
-    }
 
-    if (consumerPanelToChange != null) {
-        consumerPanelToChange.img_label.setIcon(new ImageIcon(getClass().getResource(route)));
+        if (consumerPanelToChange != null) {
+            consumerPanelToChange.img_label.setIcon(new ImageIcon(getClass().getResource(route)));
+        }
     }
-}
+    
+    public void updateGUIProducerStates(int producerIndex) {
+        String newState = producers[producerIndex].getStateFlag();
+        String route = "/img/" + newState + ".png";
+        Panel producerPanelToChange = null; // Initialize to null
+
+        // Find the Panel corresponding to the consumerIndex
+        for (Component component : view.pnl_producerInfo.getComponents()) {
+            if (component instanceof Panel) {
+                Panel panel = (Panel) component;
+                if (panel.id == producerIndex) {
+                    producerPanelToChange = panel;
+                    break; // Exit the loop once the correct panel is found
+                }
+            }
+        }
+
+        if (producerPanelToChange != null) {
+            producerPanelToChange.img_label.setIcon(new ImageIcon(getClass().getResource(route)));
+        }
+    }
 
 }

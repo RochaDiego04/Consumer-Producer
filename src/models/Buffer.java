@@ -48,14 +48,18 @@ public class Buffer {
         return this.buffer[this.next];
     }
     
-    public synchronized void produce(String burguer){
+    public synchronized void produce(String burguer, int producerIndex, Producer producer){
         while(this.isFull){
             try {
+                producer.setStateFlag("sleeping");
+                producer.controller.updateGUIProducerStates(producerIndex); //Update GUI
                 wait();
             } catch (InterruptedException ex) {
                 Logger.getLogger(Buffer.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        
+        producer.cooking();
         
         buffer[next] = burguer;
         next++;

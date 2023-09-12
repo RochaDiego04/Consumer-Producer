@@ -40,7 +40,7 @@ public class Consumer extends Thread{
     public void eating(){ // Method called from consuming()
         try {
             this.setStateFlag("consuming");
-            System.out.println("Consumer " + index + " is " + this.getStateFlag());
+            System.out.println("Consumer " + (index + 1) + " is " + this.getStateFlag());
             this.controller.updateGUIConsumerStates(index);
             
             sleep((long) (Math.random() * 4000));
@@ -53,7 +53,7 @@ public class Consumer extends Thread{
         this.setStateFlag("standing");
         controller.updateGUIConsumerStates(index);
         try {
-            sleep((long) (Math.random() * 4000));
+            sleep((long) (Math.random() * 2000 + 1000));
         } catch (InterruptedException ex) {
             Logger.getLogger(Consumer.class.getName()).log(Level.SEVERE, null, ex);
         }
