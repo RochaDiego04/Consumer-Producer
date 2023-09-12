@@ -44,6 +44,7 @@ public class MainView extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         pnl_consumerInfo = new javax.swing.JPanel();
         btn_addProducer = new javax.swing.JButton();
+        btn_start = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -77,7 +78,7 @@ public class MainView extends javax.swing.JFrame {
                 btn_addConsumerMouseExited(evt);
             }
         });
-        pnl_background.add(btn_addConsumer, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 40, 230, 50));
+        pnl_background.add(btn_addConsumer, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 50, 200, 40));
 
         pnl_producerInfo.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         pnl_producerInfo.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
@@ -122,7 +123,23 @@ public class MainView extends javax.swing.JFrame {
                 btn_addProducerActionPerformed(evt);
             }
         });
-        pnl_background.add(btn_addProducer, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 40, 230, 50));
+        pnl_background.add(btn_addProducer, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 50, 220, 40));
+
+        btn_start.setBackground(new java.awt.Color(0, 0, 0));
+        btn_start.setFont(new java.awt.Font("Yu Gothic UI", 1, 36)); // NOI18N
+        btn_start.setForeground(new java.awt.Color(255, 255, 255));
+        btn_start.setText("Start");
+        btn_start.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 33, 0), 1, true));
+        btn_start.setFocusPainted(false);
+        btn_start.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_startMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_startMouseExited(evt);
+            }
+        });
+        pnl_background.add(btn_start, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 10, 140, 80));
 
         getContentPane().add(pnl_background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1110, 580));
 
@@ -150,6 +167,15 @@ public class MainView extends javax.swing.JFrame {
     private void btn_addProducerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addProducerActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_addProducerActionPerformed
+
+    private void btn_startMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_startMouseEntered
+        btn_start.setBackground(new Color(21,21,21));
+        btn_start.setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_btn_startMouseEntered
+
+    private void btn_startMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_startMouseExited
+        btn_start.setBackground(new Color(0,0,0));
+    }//GEN-LAST:event_btn_startMouseExited
     
     private void addPanelsToConsumerInfo() {
         for (int i = 1; i <= 30; i++) {
@@ -194,8 +220,9 @@ public class MainView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_addConsumer;
-    private javax.swing.JButton btn_addProducer;
+    public javax.swing.JButton btn_addConsumer;
+    public javax.swing.JButton btn_addProducer;
+    public javax.swing.JButton btn_start;
     private javax.swing.JLabel img_restaurant;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_numConsumers;

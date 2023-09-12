@@ -1,0 +1,95 @@
+
+package controller;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import models.Buffer;
+import models.Consumer;
+import models.Producer;
+import view.MainView;
+
+
+public class Controller implements ActionListener{
+    
+    private MainView view;
+    private Buffer buffer;
+    private Producer[] producers;
+    private Consumer[] consumers;
+    
+    private boolean producerThreadsCreated = false;
+    private boolean consumerThreadsCreated = false;
+    
+    public Controller(MainView view, Buffer buffer){
+        this.view = view;
+        this.buffer = buffer;
+        
+        // Event Listeners
+        this.view.btn_start.addActionListener(this);
+        this.view.btn_addConsumer.addActionListener(this);
+        this.view.btn_addProducer.addActionListener(this);
+    }
+    
+    public void start(){
+        view.setTitle("Consumer-Producer");
+        view.setLocationRelativeTo(null);
+        
+        if (!producerThreadsCreated) {
+            createProducers();
+            producerThreadsCreated = true;
+        }
+        
+        if (!consumerThreadsCreated) {
+            createConsumers();
+            consumerThreadsCreated = true;
+        }
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == view.btn_start){
+            startProducerThreads();
+            startConsumerThreads();
+        }
+        else if (e.getSource() == view.btn_addConsumer) {
+            System.out.println("Btn añadir consumidor");
+        }
+        else if (e.getSource() == view.btn_addProducer) {
+            System.out.println("Btn añadir productor");
+        }
+    }
+    
+    public void createProducers() {
+        this.producers = new Producer[5];
+    
+        for (int i = 0; i < this.producers.length; i++) {
+            this.producers[i] = new Producer(buffer, "Producer" + i); // add same buffer for each producer
+        }
+    }
+    
+    public void createConsumers() {
+        this.consumers = new Consumer[5];
+    
+        for (int i = 0; i < this.consumers.length; i++) {
+            this.consumers[i] = new Consumer(buffer, "Consumer" + i);
+        }
+    }
+    
+    public void startProducerThreads(){
+        for (int i = 0; i < producers.length; i++) { 
+          Producer producer = producers[i];
+            if (!producer.isAlive()) { // Check if the thread is not already running
+                producer.start();
+                //this.updateGUIStates(i);
+            }
+        }
+    }
+    
+    public void startConsumerThreads(){
+        for (int i = 0; i < consumers.length; i++) { 
+          Consumer consumer = consumers[i];
+            if (!consumer.isAlive()) { // Check if the thread is not already running
+                consumer.start();
+                //this.updateGUIStates(i);
+            }
+        }
+    }
+}

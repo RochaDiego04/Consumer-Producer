@@ -3,10 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Diego/Documents/NetBeansProjects/Consumer-Product/src/models/Buffer.java</file>
-            <file>file:/C:/Users/Diego/Documents/NetBeansProjects/Consumer-Product/src/view/MainView.java</file>
-            <file>file:/C:/Users/Diego/Documents/NetBeansProjects/Consumer-Product/src/models/Producer.java</file>
-            <file>file:/C:/Users/Diego/Documents/NetBeansProjects/Consumer-Product/src/models/Consumer.java</file>
+            <file>file:/C:/Users/Diego/Documents/NetBeansProjects/Consumer-Product/src/controller/Controller.java</file>
         </group>
     </open-files>
 </project-private>
