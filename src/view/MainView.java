@@ -34,6 +34,12 @@ public class MainView extends javax.swing.JFrame {
     private void initComponents() {
 
         pnl_background = new javax.swing.JPanel();
+        img_burguer1 = new javax.swing.JLabel();
+        img_burguer2 = new javax.swing.JLabel();
+        img_burguer3 = new javax.swing.JLabel();
+        img_burguer4 = new javax.swing.JLabel();
+        img_burguer5 = new javax.swing.JLabel();
+        img_burguer6 = new javax.swing.JLabel();
         lbl_numConsumers = new javax.swing.JLabel();
         lbl_numProducers = new javax.swing.JLabel();
         btn_addConsumer = new javax.swing.JButton();
@@ -52,6 +58,12 @@ public class MainView extends javax.swing.JFrame {
 
         pnl_background.setBackground(new java.awt.Color(51, 0, 0));
         pnl_background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pnl_background.add(img_burguer1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 120, 50, 50));
+        pnl_background.add(img_burguer2, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 180, 50, 50));
+        pnl_background.add(img_burguer3, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 240, 50, 50));
+        pnl_background.add(img_burguer4, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 300, 50, 50));
+        pnl_background.add(img_burguer5, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 360, 50, 50));
+        pnl_background.add(img_burguer6, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 420, 50, 50));
 
         lbl_numConsumers.setFont(new java.awt.Font("Cascadia Code", 0, 20)); // NOI18N
         lbl_numConsumers.setForeground(new java.awt.Color(239, 221, 221));
@@ -215,6 +227,12 @@ public class MainView extends javax.swing.JFrame {
     public javax.swing.JButton btn_addConsumer;
     public javax.swing.JButton btn_addProducer;
     public javax.swing.JButton btn_start;
+    public javax.swing.JLabel img_burguer1;
+    public javax.swing.JLabel img_burguer2;
+    public javax.swing.JLabel img_burguer3;
+    public javax.swing.JLabel img_burguer4;
+    public javax.swing.JLabel img_burguer5;
+    public javax.swing.JLabel img_burguer6;
     private javax.swing.JLabel img_restaurant;
     private javax.swing.JScrollPane jScrollPane;
     private javax.swing.JScrollPane jScrollPane1;

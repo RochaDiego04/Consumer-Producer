@@ -22,6 +22,7 @@ public class Controller implements ActionListener{
     
     private boolean producerThreadsCreated = false;
     private boolean consumerThreadsCreated = false;
+   
     
     public Controller(MainView view, Buffer buffer){
         this.view = view;
@@ -80,6 +81,7 @@ public class Controller implements ActionListener{
             this.consumers[i] = new Consumer(buffer, i, this);
         }
     }
+    
     
     public void startProducerThreads(){
         for (int i = 0; i < producers.length; i++) { 
@@ -206,5 +208,66 @@ public class Controller implements ActionListener{
             textAreaToChange.setCaretPosition(textAreaToChange.getDocument().getLength());
         }
     }
-
+    
+    public void updateGUIBuffer(int burguerQuantity){
+        String image = "/img/burguer.png";
+        switch(burguerQuantity){
+            case 0:
+                view.img_burguer1.setIcon(new ImageIcon(getClass().getResource("")));
+                view.img_burguer2.setIcon(new ImageIcon(getClass().getResource("")));
+                view.img_burguer3.setIcon(new ImageIcon(getClass().getResource("")));
+                view.img_burguer4.setIcon(new ImageIcon(getClass().getResource("")));
+                view.img_burguer5.setIcon(new ImageIcon(getClass().getResource("")));
+                view.img_burguer6.setIcon(new ImageIcon(getClass().getResource("")));
+                break;
+            case 1:
+                view.img_burguer1.setIcon(new ImageIcon(getClass().getResource(image)));
+                view.img_burguer2.setIcon(new ImageIcon(getClass().getResource("")));
+                view.img_burguer3.setIcon(new ImageIcon(getClass().getResource("")));
+                view.img_burguer4.setIcon(new ImageIcon(getClass().getResource("")));
+                view.img_burguer5.setIcon(new ImageIcon(getClass().getResource("")));
+                view.img_burguer6.setIcon(new ImageIcon(getClass().getResource("")));
+                break;
+            case 2:
+                view.img_burguer1.setIcon(new ImageIcon(getClass().getResource(image)));
+                view.img_burguer2.setIcon(new ImageIcon(getClass().getResource(image)));
+                view.img_burguer3.setIcon(new ImageIcon(getClass().getResource("")));
+                view.img_burguer4.setIcon(new ImageIcon(getClass().getResource("")));
+                view.img_burguer5.setIcon(new ImageIcon(getClass().getResource("")));
+                view.img_burguer6.setIcon(new ImageIcon(getClass().getResource("")));
+                break;
+            case 3:
+                view.img_burguer1.setIcon(new ImageIcon(getClass().getResource(image)));
+                view.img_burguer2.setIcon(new ImageIcon(getClass().getResource(image)));
+                view.img_burguer3.setIcon(new ImageIcon(getClass().getResource(image)));
+                view.img_burguer4.setIcon(new ImageIcon(getClass().getResource("")));
+                view.img_burguer5.setIcon(new ImageIcon(getClass().getResource("")));
+                view.img_burguer6.setIcon(new ImageIcon(getClass().getResource("")));
+                break;
+            case 4:
+                view.img_burguer1.setIcon(new ImageIcon(getClass().getResource(image)));
+                view.img_burguer2.setIcon(new ImageIcon(getClass().getResource(image)));
+                view.img_burguer3.setIcon(new ImageIcon(getClass().getResource(image)));
+                view.img_burguer4.setIcon(new ImageIcon(getClass().getResource(image)));
+                view.img_burguer5.setIcon(new ImageIcon(getClass().getResource("")));
+                view.img_burguer6.setIcon(new ImageIcon(getClass().getResource("")));
+                break;
+            case 5:
+                view.img_burguer1.setIcon(new ImageIcon(getClass().getResource(image)));
+                view.img_burguer2.setIcon(new ImageIcon(getClass().getResource(image)));
+                view.img_burguer3.setIcon(new ImageIcon(getClass().getResource(image)));
+                view.img_burguer4.setIcon(new ImageIcon(getClass().getResource(image)));
+                view.img_burguer5.setIcon(new ImageIcon(getClass().getResource(image)));
+                view.img_burguer6.setIcon(new ImageIcon(getClass().getResource("")));
+                break;
+            case 6:
+                view.img_burguer1.setIcon(new ImageIcon(getClass().getResource(image)));
+                view.img_burguer2.setIcon(new ImageIcon(getClass().getResource(image)));
+                view.img_burguer3.setIcon(new ImageIcon(getClass().getResource(image)));
+                view.img_burguer4.setIcon(new ImageIcon(getClass().getResource(image)));
+                view.img_burguer5.setIcon(new ImageIcon(getClass().getResource(image)));
+                view.img_burguer6.setIcon(new ImageIcon(getClass().getResource(image)));
+                break;
+        }
+    }
 }

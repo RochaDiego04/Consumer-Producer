@@ -11,7 +11,7 @@ public class MVC {
 
     public static void main(String[] args) {
         MainView view = new MainView();
-        Buffer buffer = new Buffer(5);
+        Buffer buffer = new Buffer(6);
 
         Controller ctrl = new Controller(view, buffer);
         ctrl.start();

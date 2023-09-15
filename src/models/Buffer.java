@@ -40,13 +40,21 @@ public class Buffer {
         consumer.eating();
         
         next--;
+        
+        String consumedItem = buffer[next];
+        this.buffer[this.next] = null;
+       
         this.isFull = false;
         if(next == 0){
             this.isEmpty = true;
         }
         
         notifyAll();
-        return this.buffer[this.next];
+        
+        int burguerInBuffer = this.countNonNullStrings(this.buffer);
+        consumer.controller.updateGUIBuffer(burguerInBuffer);
+        
+        return consumedItem;
     }
     
     public synchronized void produce(String burguer, int producerIndex, Producer producer){
@@ -64,6 +72,11 @@ public class Buffer {
         producer.cooking();
         
         buffer[next] = burguer;
+        
+        
+        int burguerInBuffer = this.countNonNullStrings(this.buffer);
+        producer.controller.updateGUIBuffer(burguerInBuffer);
+        
         next++;
         this.isEmpty = false;
         if(next == this.buffer.length){
@@ -71,5 +84,17 @@ public class Buffer {
         }
         
         notifyAll();
+    }
+    
+    public int countNonNullStrings(String[] array) {
+    int count = 0;
+    
+    for (String element : array) {
+        if (element != null) {
+            count++;
+        }
+    }
+    
+    return count;
     }
 }
